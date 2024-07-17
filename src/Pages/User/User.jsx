@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 const User = () => {
     const { createUser } = useContext(AuthContext);
     const API_URL = 'http://localhost:5000';
-
+    const navigate  = useNavigate()
     const handleSubmit = async (e) => {
         e.preventDefault();
         const form = e.target;
@@ -18,16 +19,17 @@ const User = () => {
             email,
             name,
             password,
-            number,
+            number,  
             role: 'user',
         };
         try {
             // Firebase user creation
             await createUser(email, password);
             // Sending user details to the backend
-            await axios.post(API_URL + '/requsted', userDetails, {
+            await axios.post(API_URL + '/user', userDetails, {
                 withCredentials: true,
             });
+            navigate('/')
             alert('User registration successful!');
         } catch (error) {
             console.error('Error registering user:', error);

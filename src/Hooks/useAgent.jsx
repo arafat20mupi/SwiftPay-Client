@@ -13,16 +13,15 @@ const useAgent = () => {
           'Content-Type': 'application/json',
         }
       });
-    const { data: isAgent, isPending } = useQuery({
-        queryKey: ['isAgent', user?.email],
-        queryFn: async () => {
-            const  data  = await axiosCommon.get(`/user/${user?.email}`)
-            console.log(data);
-            return data
+      const {data:isAgent,isPending} = useQuery({
+        queryKey:['isAgent',user?.email],
+        queryFn:async()=> {
+            const {data} = await axiosCommon.get(`/user/${user?.email}`)
+            return data?.agent
         }
     })
-    console.log(user);
-    return [isAgent, isPending]
+    console.log(isAgent);
+    return [isAgent,isPending]
 };
 
 export default useAgent;

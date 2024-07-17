@@ -13,16 +13,15 @@ const useAdmin = () => {
           'Content-Type': 'application/json',
         }
       });
-    const { data: isAdmin, isPending } = useQuery({
-        queryKey: ['isAdmin', user?.email],
-        queryFn: async () => {
-            const  data  = await axiosCommon.get(`/user/${user?.email}`)
-            console.log(data.data.admin);
-            return data.data.admin
+      const {data:isAdmin,isPending} = useQuery({
+        queryKey:['isAdmin',user?.email],
+        queryFn:async()=> {
+            const {data} = await axiosCommon.get(`/user/${user?.email}`)
+            return data?.admin
         }
     })
     console.log(isAdmin , isPending);
-    return [isAdmin, isPending]
+    return [isAdmin,isPending]
 };
 
 export default useAdmin;

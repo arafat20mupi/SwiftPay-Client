@@ -13,15 +13,16 @@ const useUser = () => {
           'Content-Type': 'application/json',
         }
       });
-    const { data: isUser, isPending } = useQuery({
-        queryKey: ['isUser', user?.email],
-        queryFn: async () => {
-            const  data  = await axiosCommon.get(`/user/${user?.email}`)
-            return data
+      const {data:isUser,isPending} = useQuery({
+        queryKey:['isUser',user?.email],
+        queryFn:async()=> {
+            const {data} = await axiosCommon.get(`/user/${user?.email}`)
+            console.log(data);
+            return data?.user
         }
     })
-    console.log(user);
-    return [isUser, isPending]
+    console.log(isUser);
+    return [isUser,isPending]
 };
 
 export default useUser;
