@@ -26,7 +26,7 @@ const User = () => {
             // Firebase user creation
             await createUser(email, password);
             // Sending user details to the backend
-            await axios.post(API_URL + '/user', userDetails, {
+            await axios.post(API_URL + '/requested', userDetails, {
                 withCredentials: true,
             });
             navigate('/')
