@@ -5,31 +5,51 @@ const UserRequest = () => {
   const [requests, setRequests] = useState([]);
 
   useEffect(() => {
-    // Fetch requests
-    const fetchRequests = async () => {
-      try {
-        const response = await axios.get('http://localhost:5000/requested');
-        setRequests(response.data);
-      } catch (error) {
-        console.error('Error fetching requests:', error);
-      }
-    };
-
     fetchRequests();
   }, []);
 
-  const handleUpdateBalance = async (id) => {
+  const fetchRequests = async () => {
     try {
-      const response = await axios.put(`http://localhost:5000/requested/${id}`, {
-        balance: 40
-      });
-      console.log(response);
-      alert('Balance updated successfully');
+      const response = await axios.get('http://localhost:5000/requested/user');
+      setRequests(response.data);
     } catch (error) {
-      console.error('Error updating balance:', error);
-      alert('Failed to update balance');
+      console.error('Error fetching requests:', error);
     }
   };
+
+  const handleUpdateBalance = async (id) => {
+    console.log(`Updating balance for user ID: ${id}`);
+
+    try {
+      const response = await axios.get(`http://localhost:5000/requested/${id}`);
+      const userDetails = response.data;
+      console.log('User details fetched:', userDetails);
+
+      const updatedRequest = {
+        balance: 40,
+        status: 'active',
+      };
+
+      await axios.put(`http://localhost:5000/requested/${id}`, updatedRequest);
+      console.log('User balance updated successfully');
+
+      const newUserDetails = {
+        ...userDetails,
+        balance: updatedRequest.balance,
+        status: updatedRequest.status,
+      };
+
+      await axios.post('http://localhost:5000/user', newUserDetails, {
+        withCredentials: true,
+      });
+      alert('User Aprrove successful!');
+      fetchRequests(); // Refresh the list after updating
+    } catch (error) {
+      alert('User already approved or error updating balance');
+      console.error('Error updating balance:', error);
+    }
+  };
+
 
   return (
     <div className="container p-2 mx-auto sm:p-4 dark:text-gray-800">
@@ -46,14 +66,19 @@ const UserRequest = () => {
             </tr>
           </thead>
           <tbody>
-            {requests.map(request => (
+            {requests.map((request) => (
               <tr key={request._id} className="border-b border-opacity-20 dark:border-gray-300 dark:bg-gray-50">
                 <td className="p-3 text-left">{request.name}</td>
                 <td className="p-3 text-left">{request.email}</td>
                 <td className="p-3 text-left">{request.number}</td>
                 <td className="p-3 text-left">{request.role}</td>
-                <td className="p-3 btn-primary btn">
-                  <button onClick={() => handleUpdateBalance(request._id)} >Pending</button>
+                <td>
+                  <button
+                    className={`btn ${request.status === 'active' ? 'btn-primary ' : 'btn-secondary'}`}
+                    onClick={() => handleUpdateBalance(request._id)}
+                  >
+                    {request.status === 'active' ? 'Approved' : "Requsted "}
+                  </button>
                 </td>
               </tr>
             ))}

@@ -21,6 +21,7 @@ const User = () => {
             password,
             number,  
             role: 'user',
+            balance : 0
         };
         try {
             // Firebase user creation
