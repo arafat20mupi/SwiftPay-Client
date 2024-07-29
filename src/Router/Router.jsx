@@ -8,6 +8,12 @@ import AgentRequest from "../Components/Admin/AgentRequest";
 import UserRequest from "../Components/Admin/UserRequest";
 import AdminPage from "../Deshboard/AdminPage";
 import Agent from "../Pages/Agent/Agent";
+import UserPage from "../Deshboard/UserPage";
+import SendMoney from "../Components/User/SendMoney";
+import CashOut from "../Components/User/CashOut";
+import CashIn from "../Components/User/CashIn";
+import History from "../Components/User/History";
+import Balance from "../Components/User/Balance";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -26,7 +32,7 @@ export const router = createBrowserRouter([
         path: "/login",
         element: <Login></Login>,
     },
-    //  Deshboard page
+    //  Deshboard 
     {
         path: "/adminPage",
         element: <AdminPage></AdminPage>,
@@ -49,5 +55,32 @@ export const router = createBrowserRouter([
             }
         ]
     },
+    {
+        path: '/userPage',
+        element: <UserPage></UserPage>,
+        children: [
+            {
+                path: 'sendMoney',
+                element: <SendMoney></SendMoney>
+            },
+            {
+                path: 'cashOut',
+                element: <CashOut></CashOut>
+            },
+            {
+                path: 'cashIn',
+                element: <CashIn></CashIn>
+            },
+            {
+                path: 'History',
+                element: <History></History>
+            },
+            {
+                path: "Balance",
+                element: <Balance></Balance>
+
+            }
+        ]
+    }
     
 ]);
