@@ -39,7 +39,7 @@ const SendMoney = () => {
                 amount: amountNum,
                 pin
             });
-            
+
 
             alert(response.data.message);
         } catch (error) {
@@ -51,25 +51,50 @@ const SendMoney = () => {
     };
 
     return (
-        <div>
-            <h2>Send Money</h2>
-            <input
-                type="email"
-                placeholder="Recipient Email"
-                value={recipient}
-                onChange={(e) => setRecipient(e.target.value)}
-            />
-            <input
-                type="number"
-                placeholder="Amount"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-            />
-            <button onClick={handleSendMoney} disabled={loading}>
-                {loading ? 'Sending...' : 'Send'}
-            </button>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+        <div className='w-full justify-center items-center flex'>
+            <div className="flex flex-col max-w-md w-full  p-6 rounded-md sm:p-10">
+                <div className="mb-8  text-center">
+                    <h1 className="my-3 text-4xl font-bold">Send Money</h1>
+                </div>
+                <form noValidate="" action="" className="space-y-12">
+                    <div className="space-y-4">
+                        <div>
+                            <div className="flex justify-between m-2">
+                                <label htmlFor="password" className="font-bold  text-lg">Recipient Email</label>
+                            </div>
+                            <input
+                                className='w-full border-2 rounded p-2'
+                                type="email"
+                                placeholder="Enter Your Email"
+                                value={recipient}
+                                onChange={(e) => setRecipient(e.target.value)}
+                            />
+                        </div>
+                        <div>
+                            <div className="flex justify-between m-2">
+                                <label htmlFor="password" className="font-bold  text-lg">Amount</label>
+                            </div>
+                            <input
+                                className='w-full border-2 rounded p-2'
+                                type="number"
+                                placeholder="Enter Amount"
+                                value={amount}
+                                onChange={(e) => setAmount(e.target.value)}
+                            />
+                        </div>
+                    </div>
+                    <div className="space-y-2">
+                        <div>
+                            <button className='btn btn-primary w-full' onClick={handleSendMoney} disabled={loading}>
+                                {loading ? 'Sending...' : 'Send'}
+                            </button>
+                            {error && <p style={{ color: 'red' }}>{error}</p>}
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
+
     );
 };
 

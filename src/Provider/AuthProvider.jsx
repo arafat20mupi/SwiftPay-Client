@@ -15,7 +15,7 @@ const AuthProvider = ({ children }) => {
         try {
             const result = await createUserWithEmailAndPassword(auth, email, password);
             console.log(result);
-            return result;
+            return result; 
         } finally {
             setLoading(false);
         }

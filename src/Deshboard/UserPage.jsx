@@ -1,10 +1,10 @@
-import { NavLink, Outlet ,useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const UserPage = () => {
-    const {  logOut } = useContext(AuthContext);
-    const navigate  = useNavigate()
+    const { logOut } = useContext(AuthContext);
+    const navigate = useNavigate()
     const logout = () => {
         logOut()
         alert('Logged Out')
@@ -20,8 +20,8 @@ const UserPage = () => {
                 <NavLink to='/userPage/Balance' className={'btn btn-primary'}>Balance</NavLink>
                 <button onClick={logout} className="btn  btn-primary">Logout</button>
             </div>
-            <div className="w-full  h-screen space-y-6">
-                <p className='text-center text-3xl font-bold mt-6'>Welcome to the User Panel</p>
+            <div className="w-full justify-center flex flex-col items-center  h-screen space-y-6">
+                <p className='text-center text-3xl font-bold '>Welcome to the User Panel</p>
                 <Outlet></Outlet>
             </div>
         </div>
