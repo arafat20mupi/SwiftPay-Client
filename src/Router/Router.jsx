@@ -14,6 +14,8 @@ import CashOut from "../Components/User/CashOut";
 import CashIn from "../Components/User/CashIn";
 import History from "../Components/User/History";
 import Balance from "../Components/User/Balance";
+import Agentpage from "../Deshboard/Agentpage";
+import CashInRequest from "../Components/Agent/CashInRequest";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -70,6 +72,29 @@ export const router = createBrowserRouter([
             {
                 path: 'cashIn',
                 element: <CashIn></CashIn>
+            },
+            {
+                path: 'History',
+                element: <History></History>
+            },
+            {
+                path: "Balance",
+                element: <Balance></Balance>
+
+            }
+        ]
+    },
+    {
+        path: "/agentpage",
+        element: <Agentpage></Agentpage>,
+        children: [
+            {
+                path: 'sendMoney',
+                element: <SendMoney></SendMoney>
+            },
+            {
+                path: 'cashInRequest',
+                element: <CashInRequest></CashInRequest>
             },
             {
                 path: 'History',

@@ -53,7 +53,7 @@ const CashOut = () => {
 
     return (
         <div className='w-full justify-center items-center flex'>
-            <div className="flex flex-col max-w-md w-full p-6 rounded-md sm:p-10">
+            <div className="flex flex-col max-w-md w-full p-6 shadow-md rounded-md sm:p-10">
                 <div className="mb-8 text-center">
                     <h1 className="my-3 text-4xl font-bold">Cash Out</h1>
                 </div>
