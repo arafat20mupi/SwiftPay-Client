@@ -33,7 +33,6 @@ const Balance = () => {
     }
 
     if (balance === null) {
-        console.log('Balance is null for user:', user.email);
         return <div>Loading balance...</div>; // Loading state for balance
     }
 

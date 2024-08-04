@@ -88,17 +88,10 @@ export const router = createBrowserRouter([
         path: "/agentpage",
         element: <Agentpage></Agentpage>,
         children: [
-            {
-                path: 'sendMoney',
-                element: <SendMoney></SendMoney>
-            },
+            
             {
                 path: 'cashInRequest',
                 element: <CashInRequest></CashInRequest>
-            },
-            {
-                path: 'History',
-                element: <History></History>
             },
             {
                 path: "Balance",
