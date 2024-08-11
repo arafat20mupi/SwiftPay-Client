@@ -1,10 +1,14 @@
+
 # Mobile Financial Service (MFS) Application
 
-Live link : 
+## Project Name : SwiftPay
+
+**Live Link:** [SwiftPay](https://swiftpay-6ecef.web.app)  
+**Backend GitHub Link:** [SwiftPay Server](https://github.com/arafat20mupi/SwiftPay-server.git)
 
 ## Overview
 
-This is a basic Mobile Financial Service (MFS) application, inspired by platforms like bKash or Nagad, built using React.js, Node.js, Express.js, and MongoDB. The application supports essential features such as user authentication, money transfers, cash-outs, balance inquiries, and transaction history management. The system supports three roles: User, Agent, and Admin, each with distinct functionalities.
+This is a Mobile Financial Service (MFS) application inspired by platforms like bKash or Nagad, built using React.js, Node.js, Express.js, and MongoDB. The application supports essential features such as user authentication, money transfers, cash-outs, balance inquiries, and transaction history management. The system supports three roles: User, Agent, and Admin, each with distinct functionalities.
 
 ## Table of Contents
 
@@ -49,15 +53,15 @@ This is a basic Mobile Financial Service (MFS) application, inspired by platform
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB
 - **Authentication:** JWT, bcrypt.js for PIN hashing
-- **Hosting:** Surge (Frontend), MongoDB Atlas (Database) , Vercel (BackEnd) 
+- **Hosting:** Vercel (Backend), MongoDB Atlas (Database), Firebase (Frontend)
 
 ## Installation
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/your-username/mfs-app.git
-   cd mfs-app
-  
+   git clone https://github.com/arafat20mupi/SwiftPay-Client
+   cd SwiftPay-Client
+   ```
 
 2. **Install Dependencies:**
    ```bash
@@ -66,7 +70,6 @@ This is a basic Mobile Financial Service (MFS) application, inspired by platform
 
 3. **Set up Environment Variables:**
    Create a `.env` file in the root directory and add the following environment variables:
-
    ```bash
    MONGO_URI=your_mongo_db_connection_string
    JWT_SECRET=your_jwt_secret
@@ -76,8 +79,7 @@ This is a basic Mobile Financial Service (MFS) application, inspired by platform
    ```bash
    npm start
    ```
-
-   The application will be available at `http://localhost:3000`.
+   The application will be available at `http://localhost:5000`.
 
 ## Usage
 
@@ -115,4 +117,4 @@ This is a basic Mobile Financial Service (MFS) application, inspired by platform
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 ```
 
-This `README.md` provides a comprehensive guide for your MFS application, detailing features, setup instructions, usage, API endpoints, and more. You can modify or expand upon this content as needed for your specific project.
+This version makes sure that all instructions and descriptions are clear and consistent. Feel free to adjust any details based on specific changes or updates to your project.
