@@ -9,7 +9,7 @@ const History = () => {
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/transactions/${user.email}`, { withCredentials: true });
+        const response = await axios.get(`https://swift-pay-server-seven.vercel.app/api/transactions/${user.email}`, { withCredentials: true });
         setTransactions(response.data);
       } catch (error) {
         console.error('Error fetching transactions:', error);
@@ -20,7 +20,10 @@ const History = () => {
       fetchTransactions();
     }
   }, [user]);
-
+  
+  if (!user) {
+    return <span className="loading loading-bars loading-lg"></span>
+  }
   return (
     <div className="container p-2 mx-auto sm:p-4">
       <h2 className="mb-4 text-2xl font-semibold text-center leading-tight">Transaction History</h2>

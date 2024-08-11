@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 const Agent = () => {
     const { createUser } = useContext(AuthContext);
-    const API_URL = 'http://localhost:5000';
+    const API_URL = 'https://swift-pay-server-seven.vercel.app';
     const navigate  = useNavigate()
     const handleSubmit = async (e) => {
         e.preventDefault();

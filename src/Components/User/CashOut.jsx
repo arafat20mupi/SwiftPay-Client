@@ -25,7 +25,7 @@ const CashOut = () => {
                 return;
             }
     
-            const response = await axios.post('http://localhost:5000/api/cashOut', {
+            const response = await axios.post('https://swift-pay-server-seven.vercel.app/api/cashOut', {
                 agent,
                 amount,
                 pin,
@@ -49,7 +49,9 @@ const CashOut = () => {
             }
         }
     };
-    
+    if (!user) {
+        return <span className="loading loading-bars loading-lg"></span>
+    }
 
     return (
         <div className='w-full justify-center items-center flex'>

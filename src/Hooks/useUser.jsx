@@ -8,7 +8,7 @@ const useUser = () => {
    
     // const axiosSecure = useAxiosSecure()
     const axiosCommon = axios.create({
-        baseURL: 'http://localhost:5000/',
+        baseURL: 'https://swift-pay-server-seven.vercel.app/',
         headers: {
           'Content-Type': 'application/json',
         }

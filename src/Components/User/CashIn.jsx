@@ -14,7 +14,7 @@ const RequestCashIn = () => {
         setLoading(true);
 
         try {
-            const response = await axios.post('http://localhost:5000/api/requestCashIn', {
+            const response = await axios.post('https://swift-pay-server-seven.vercel.app/api/requestCashIn', {
                 userEmail: user.email,
                 agentEmail,
                 amount: Number(amount) // Convert amount to number
@@ -28,7 +28,9 @@ const RequestCashIn = () => {
             setLoading(false);
         }
     };
-
+    if (!user) {
+        return <span className="loading loading-bars loading-lg"></span>
+    }
     return (
         <div className="w-full justify-center items-center flex ">
             <div className="flex flex-col max-w-md w-full p-6 rounded-md sm:p-10  shadow-md">

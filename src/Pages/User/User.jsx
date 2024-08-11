@@ -4,7 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 const User = () => {
     const { createUser } = useContext(AuthContext);
-    const API_URL = 'http://localhost:5000';
+    const API_URL = 'https://swift-pay-server-seven.vercel.app';
     const navigate  = useNavigate()
     const handleSubmit = async (e) => {
         e.preventDefault();

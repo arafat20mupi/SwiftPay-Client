@@ -33,7 +33,7 @@ const SendMoney = () => {
                 return;
             }
 
-            const response = await axios.post('http://localhost:5000/api/sendMoney', {
+            const response = await axios.post('https://swift-pay-server-seven.vercel.app/api/sendMoney', {
                 sender: user.email,
                 recipient,
                 amount: amountNum,
@@ -49,7 +49,9 @@ const SendMoney = () => {
             setLoading(false);
         }
     };
-
+    if (!user) {
+        return <span className="loading loading-bars loading-lg"></span>
+    }
     return (
         <div className='w-full justify-center items-center flex'>
             <div className="flex flex-col max-w-md w-full shadow-md  p-6 rounded-md sm:p-10">

@@ -10,7 +10,7 @@ const UserRequest = () => {
 
   const fetchRequests = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/requested/user');
+      const response = await axios.get('https://swift-pay-server-seven.vercel.app/requested/user');
       setRequests(response.data);
     } catch (error) {
       console.error('Error fetching requests:', error);
@@ -21,7 +21,7 @@ const UserRequest = () => {
     console.log(`Updating balance for user ID: ${id}`);
 
     try {
-      const response = await axios.get(`http://localhost:5000/requested/${id}`);
+      const response = await axios.get(`https://swift-pay-server-seven.vercel.app/requested/${id}`);
       const userDetails = response.data;
       console.log('User details fetched:', userDetails);
 
@@ -30,7 +30,7 @@ const UserRequest = () => {
         status: 'active',
       };
 
-      await axios.put(`http://localhost:5000/requested/${id}`, updatedRequest);
+      await axios.put(`https://swift-pay-server-seven.vercel.app/requested/${id}`, updatedRequest);
       console.log('User balance updated successfully');
 
       const newUserDetails = {
@@ -39,7 +39,7 @@ const UserRequest = () => {
         status: updatedRequest.status,
       };
 
-      await axios.post('http://localhost:5000/user', newUserDetails, {
+      await axios.post('https://swift-pay-server-seven.vercel.app/user', newUserDetails, {
         withCredentials: true,
       });
       alert('User Aprrove successful!');

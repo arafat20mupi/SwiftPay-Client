@@ -10,7 +10,7 @@ const Balance = () => {
         if (user && user.email) {
             const fetchBalance = async () => {
                 try {
-                    const response = await axios.get(`http://localhost:5000/api/balance/${user.email}`);
+                    const response = await axios.get(`https://swift-pay-server-seven.vercel.app/api/balance/${user.email}`);
                     if (!response.data) {
                         console.error('No balance found for user:', user.email);
                         return;
@@ -29,11 +29,11 @@ const Balance = () => {
     }, [user]);
 
     if (!user) {
-        return <div>Loading...</div>; // Or handle the loading state as per your UI design
+        return <span className="loading loading-bars loading-lg"></span>
     }
 
     if (balance === null) {
-        return <div>Loading balance...</div>; // Loading state for balance
+        return <span className="loading loading-bars loading-lg"></span>
     }
 
     return (

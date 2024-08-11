@@ -8,7 +8,7 @@ const CashInRequest = () => {
     useEffect(() => {
         const fetchRequests = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/requestCashIn', { withCredentials: true });
+                const response = await axios.get('https://swift-pay-server-seven.vercel.app/api/requestCashIn', { withCredentials: true });
                 setRequests(response.data);
             } catch (error) {
                 console.error('Error fetching cash-in requests:', error);
@@ -21,7 +21,7 @@ const CashInRequest = () => {
     const handleApprove = async (requestId) => {
         try {
             const agentEmail = user.email // Replace with the actual agent's email
-            const response = await axios.put(`http://localhost:5000/api/approveCashIn/${requestId}`, { agentEmail }, { withCredentials: true });
+            const response = await axios.put(`https://swift-pay-server-seven.vercel.app/api/approveCashIn/${requestId}`, { agentEmail }, { withCredentials: true });
             if (response.status === 200) {
                 setRequests(requests.map(request =>
                     request._id === requestId ? { ...request, status: 'approved' } : request
